@@ -3,7 +3,7 @@ import production from './production.env'
 
 const envConfigs = {
     development,
-    production
+    production,
 }
 
 const config = (function (env) {
