@@ -12,3 +12,7 @@ export const update = (id, params) => {
 export const deleteById =  (id) => {
   return JobModel.findByIdAndDelete(id)
 }
+
+export function findJobById (id) {
+  return JobModel.findById(id)
+}
