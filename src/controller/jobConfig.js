@@ -1,3 +1,4 @@
+// controller层，用来处理业务逻辑，比如获取、操作数据
 import * as services from '../services/jobConfig'
 import { RESPONSE_CODE } from '../constant'
 

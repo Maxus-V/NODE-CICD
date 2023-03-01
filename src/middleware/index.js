@@ -22,6 +22,7 @@ export const handleResponse = () => {
       ctx.body = null
       return
     }
+    // controller 层的结果处理结果放置 ctx.state.apiResponse 中
     const { code, data, msg } = ctx.state.apiResponse
     ctx.body = getResult(code, data, msg)
   }

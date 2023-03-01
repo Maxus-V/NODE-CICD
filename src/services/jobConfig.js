@@ -1,3 +1,4 @@
+//service层，用来操作数据库
 import JobModel from '../model/jobConfig'
 
 export const save = (params) => {
