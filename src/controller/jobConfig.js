@@ -55,3 +55,43 @@ export async function del (ctx, next) {
     }
   }
 }
+
+export async function getConfigList (ctx, next) {
+  try {
+    const { pageNo: page, pageSize, projectName } = ctx.request.query
+    const pageData = await services.findJobPage(page, pageSize, { projectName })
+    const total = await services.countJob({ projectName })
+    ctx.state.apiResponse = {
+      code: RESPONSE_CODE.SUC,
+      data: {
+        list: pageData,
+        page,
+        pageSize,
+        total
+      }
+    }
+  } catch (e) {
+    ctx.state.apiResponse = {
+      code: RESPONSE_CODE.ERR,
+      msg: '配置分页查询失败'
+    }
+  }
+  next()
+}
+
+export async function getConfigDetail (ctx, next) {
+  try {
+    const { id } = ctx.request.query
+    const data = await services.findJobDetail(id)
+    ctx.state.apiResponse = {
+      code: RESPONSE_CODE.SUC,
+      data
+    }
+  } catch (e) {
+    ctx.state.apiResponse = {
+      code: RESPONSE_CODE.ERR,
+      msg: '配置详情查询失败'
+    }
+  }
+  next()
+}
